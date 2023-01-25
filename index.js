@@ -30,6 +30,8 @@ console.log(valueNumber(7) ? valueNumber(5) : 'Off')
 // person.daysOfTheWeek.monday.type[value] = true
 // console.log(person)
 
+
+
 // Object that contains name of the person and days of the week person is working
 const person = {
   name: JSONobj['Weekly Activity Schedule for Reading Broad St'],
