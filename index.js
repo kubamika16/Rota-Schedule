@@ -14,7 +14,7 @@ const json = XLSX.utils.sheet_to_json(sheet)
 //Wyciągnięcie z 'json' danych które zaczynają się od 'Jakub Mika'
 const JSONobj = json.find(
   (arg) =>
-    arg['Weekly Activity Schedule for Reading Broad St'] === 'Jakub Mika',
+    arg['Weekly Activity Schedule for Reading Broad St'] === 'Alina Fartade',
 )
 console.log(JSONobj)
 
@@ -41,35 +41,35 @@ const person = {
     },
     tuesday: {
       type: {
-        [value]: valueNumber(4)
+        [valueNumber(3)]: valueNumber(4)
           ? `${valueNumber(4)} - ${valueNumber(5)}`
           : 'Day off',
       },
     },
     wednesday: {
       type: {
-        [value]: valueNumber(8)
+        [valueNumber(7)]: valueNumber(8)
           ? `${valueNumber(8)} - ${valueNumber(9)}`
           : 'Day off',
       },
     },
     thursday: {
       type: {
-        [value]: valueNumber(12)
+        [valueNumber(11)]: valueNumber(12)
           ? `${valueNumber(12)} - ${valueNumber(13)}`
           : 'Day off',
       },
     },
     friday: {
       type: {
-        [value]: valueNumber(16)
+        [valueNumber(15)]: valueNumber(16)
           ? `${valueNumber(16)} - ${valueNumber(17)}`
           : 'Day off',
       },
     },
     saturday: {
       type: {
-        [value]: valueNumber(20)
+        [valueNumber(19)]: valueNumber(20)
           ? `${valueNumber(20)} - ${valueNumber(21)}`
           : 'Day off',
       },
