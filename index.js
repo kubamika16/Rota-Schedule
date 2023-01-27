@@ -14,7 +14,7 @@ const json = XLSX.utils.sheet_to_json(sheet)
 //Wyciągnięcie z 'json' danych które zaczynają się od 'Jakub Mika'
 const JSONobj = json.find(
   (arg) =>
-    arg['Weekly Activity Schedule for Reading Broad St'] === 'Alina Fartade',
+    arg['Weekly Activity Schedule for Reading Broad St'] === 'Jakub Mika',
 )
 console.log(JSONobj)
 
@@ -30,7 +30,19 @@ console.log(valueNumber(7) ? valueNumber(5) : 'Off')
 // person.daysOfTheWeek.monday.type[value] = true
 // console.log(person)
 
+// When someone has a day off, there is no such thing as a valueNumber. If that's the case, the whole message should be 'day off', not 'undefined: day off'
+const test = {
+  type: {
+    [valueNumber(11)]: valueNumber(12)
+      ? `${valueNumber(12)} - ${valueNumber(13)}`
+      : 'Day off',
+  },
+}
 
+if (test.type.key === undefined) {
+  test.type = 'Day off'
+}
+console.log(test)
 
 // Object that contains name of the person and days of the week person is working
 const person = {
@@ -86,6 +98,26 @@ const person = {
   },
 }
 
+// Iteration of every day of the week. If numbers 3, 7, 11, 15, 19, 23 are equal to 'undefined', we have to iterate and change the object
+// Tworzę tablicę z dniami tygodnia
+const daysArray = [
+  'monday',
+  'tuesday',
+  'wednesday',
+  'thursday',
+  'friday',
+  'saturday',
+  'sunday',
+]
+// Przechodzę przez kazde dni tygodnia monday - sunday
+// Jeśli monday (0).type.key === undefined
+// monday(0).type = 'Day off'
+if (person.daysOfTheWeek[daysArray[2]].type.key === undefined)
+  person.daysOfTheWeek[daysArray[2]].type = 'Day off'
+
+// if (person.daysOfTheWeek.wednesday.type.key === undefined)
+//   person.daysOfTheWeek.wednesday.type = 'Day off'
+
 // MON: 1-2
 // TUE: 4-5
 // WED: 8-9
@@ -102,3 +134,4 @@ console.log(person)
 //https://pdftables.com/upload/view/5b0gccyj19k9lkat0jhxiau71/rota.pdf
 //Pobrałem ten plik i zapisałem go jako rota.xlsx
 //Użyłem go w funkcji powyżej
+// Jestem na linijce 101
