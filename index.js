@@ -113,6 +113,29 @@ for (let i = 0; i < daysArray.length; i++) {
     person.daysOfTheWeek[daysArray[i]].type = 'Day off'
 }
 
+// Jeśli klucz, oraz wartość zawiera '\n' to znaczy że powinno być więcej wartości w obiekcie
+// Jeśli wyraz (string) zawiera więcej niż 3 wyrazy
+if (Object.keys(person.daysOfTheWeek.monday.type)[0].includes('\n')) {
+  console.log(Object.keys(person.daysOfTheWeek.monday.type)[0])
+  const key = Object.keys(person.daysOfTheWeek.monday.type)[0].replaceAll(
+    '\n',
+    '\\n',
+  )
+  console.log(key.replaceAll('\n', '\\n'))
+  const keys = Object.keys(person.daysOfTheWeek.monday.type)[0].split('\n')
+  console.log(keys)
+  // console.log(person.daysOfTheWeek.type['Meeting\\nCore Hou\\nDeep Cle'])
+  const values = person.daysOfTheWeek.monday.type[key]
+  console.log('Meeting\nCore Hou\nDeep Cle'.replaceAll('\n', '\\n') === key)
+  console.log(values)
+}
+
+const stringi = 'ABC  abc'
+console.log(stringi)
+if (stringi.includes('\n')) {
+  console.log(stringi)
+}
+
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -125,5 +148,3 @@ console.log(person)
 //Użyłem go w funkcji powyżej
 
 // Sprawdzić które dane się nie zgadzają i spróbować coś wykombinować
-
-// Jeśli klucz, oraz wartość zawiera '\n' to znaczy
