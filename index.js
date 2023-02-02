@@ -39,7 +39,8 @@ console.log(json)
 // Taking data from object about certain person
 const JSONobj = json.find(
   (arg) =>
-    arg['Weekly Activity Schedule for Reading Broad St'] === 'Alina Fartade',
+    arg['Weekly Activity Schedule for Reading Broad St'] ===
+    'Natalia\nJedrzejczyk',
 )
 console.log(JSONobj)
 
@@ -114,27 +115,42 @@ for (let i = 0; i < daysArray.length; i++) {
 }
 
 // Jeśli klucz, oraz wartość zawiera '\n' to znaczy że powinno być więcej wartości w obiekcie
-// Jeśli wyraz (string) zawiera więcej niż 3 wyrazy
-if (Object.keys(person.daysOfTheWeek.monday.type)[0].includes('\n')) {
-  console.log(Object.keys(person.daysOfTheWeek.monday.type)[0])
-  const key = Object.keys(person.daysOfTheWeek.monday.type)[0].replaceAll(
-    '\n',
-    '\\n',
-  )
-  console.log(key.replaceAll('\n', '\\n'))
-  const keys = Object.keys(person.daysOfTheWeek.monday.type)[0].split('\n')
-  console.log(keys)
-  // console.log(person.daysOfTheWeek.type['Meeting\\nCore Hou\\nDeep Cle'])
-  const values = person.daysOfTheWeek.monday.type[key]
-  console.log('Meeting\nCore Hou\nDeep Cle'.replaceAll('\n', '\\n') === key)
-  console.log(values)
+
+// ZROBIC dla kazdej wartości, nie tylko dla poniedziałku.
+
+const multiValue = function (dayOfTheWeek) {
+  if (Object.keys(person.daysOfTheWeek[dayOfTheWeek].type)[0].includes('\n')) {
+    const keys = Object.keys(person.daysOfTheWeek[dayOfTheWeek].type)[0].split(
+      '\n',
+    )
+    const values = Object.values(
+      person.daysOfTheWeek[dayOfTheWeek].type,
+    )[0].split('\n')
+    const valuesEdit = [
+      `${values[0]}-${values[1]}`,
+      values[2],
+      `${values[3]} - ${values[4]}`,
+    ]
+    console.log(valuesEdit)
+    console.log(keys)
+    console.log(values)
+
+    // Wyczyszczenie obiektu 'type'
+    person.daysOfTheWeek[dayOfTheWeek].type = {}
+
+    // Tyle ile jest wartości tyle powinno zostać utworzonych obiektów
+    for (i = 0; i < keys.length; i++) {
+      console.log(i)
+      console.log(keys[0])
+      person.daysOfTheWeek[dayOfTheWeek].type[keys[i]] = valuesEdit[i]
+    }
+  }
 }
 
-const stringi = 'ABC  abc'
-console.log(stringi)
-if (stringi.includes('\n')) {
-  console.log(stringi)
-}
+daysArray.forEach(function (item, index, array) {
+  console.log(item)
+  multiValue(item)
+})
 
 ////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////
